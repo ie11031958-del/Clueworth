@@ -1,1 +1,121 @@
-.
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ClueWorth — The Nonsense Appraisal Engine</title>
+<meta name="description" content="Tell ClueWorth one completely irrelevant fact about yourself and receive an entirely unofficial valuation.">
+<style>
+:root{--ink:#14201e;--muted:#687471;--green:#167563;--mint:#e8f4f1;--cream:#fff5e2;--line:#dce3e0;--bg:#f8faf8}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:930px;margin:auto;padding:0 20px}.hero{text-align:center;padding:54px 0 24px}.brand{font-weight:900;font-size:28px;letter-spacing:-.7px}.brand span{color:var(--green)}
+h1{font-size:clamp(40px,7vw,68px);line-height:.98;margin:18px auto 15px;letter-spacing:-2px;max-width:820px}.intro{font-size:19px;line-height:1.5;color:var(--muted);max-width:700px;margin:auto}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;margin:22px 0;box-shadow:0 8px 30px rgba(20,32,30,.05)}
+label{display:block;font-weight:800;font-size:19px;margin-bottom:10px}textarea{width:100%;min-height:110px;border:2px solid #d8dfdc;border-radius:13px;padding:16px;font:inherit;font-size:18px;resize:vertical}
+textarea:focus{outline:0;border-color:var(--green)}button{font:inherit;font-weight:900;letter-spacing:.3px;border-radius:12px;padding:17px 20px;cursor:pointer}
+.primary{width:100%;border:0;background:var(--green);color:#fff;margin-top:14px}.primary:disabled{opacity:.6;cursor:wait}
+.examples{font-size:14px;color:var(--muted);margin:10px 0 0;line-height:1.5}.result{display:none;text-align:center}.result.show{display:block}
+.kicker{color:var(--green);font-weight:900;letter-spacing:2px;font-size:14px}.clue{font-style:italic;color:var(--muted);font-size:18px;margin:10px 0 22px}
+.value{padding:25px;border-radius:15px;margin:0}.value small{display:block;color:var(--muted);font-weight:900;letter-spacing:1.4px;margin-bottom:12px}.value strong{display:block;font-size:clamp(32px,6vw,51px);line-height:1.05;letter-spacing:-1.5px}.everyday{background:var(--mint)}.impressive{background:var(--cream)}
+.or{font-weight:900;color:var(--muted);margin:16px}.verdict{font-size:18px;line-height:1.45;margin:25px auto;max-width:700px}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}.share{background:var(--ink);color:#fff;border:0}.again{background:#fff;color:#087ee8;border:1px solid var(--line)}
+.disclaimer{font-size:13px;color:var(--muted);line-height:1.45;margin:22px auto 0;max-width:760px}.error{display:none;color:#8b2525;background:#fff0f0;border:1px solid #f1cccc;padding:12px;border-radius:10px;margin-top:12px}.error.show{display:block}
+.about{text-align:center;padding:34px 0 65px}.about h2{font-size:30px;margin:0 0 12px}.about p{color:var(--muted);line-height:1.55;max-width:760px;margin:auto}
+#shareCanvas{display:none}@media(max-width:650px){.hero{padding-top:35px}.panel{padding:20px}.actions{grid-template-columns:1fr}h1{letter-spacing:-1px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<section class="hero">
+<div class="brand">Clue<span>Worth</span></div>
+<h1>Discover what you're<br>completely unnecessarily worth.</h1>
+<p class="intro">Tell us one fact about yourself. Any fact. ClueWorth's scientifically questionable appraisal department will turn it into a valuation nobody asked for.</p>
+</section>
+
+<section class="panel" id="entryPanel">
+<label for="clue">Give us your clue</label>
+<textarea id="clue" maxlength="240" placeholder="For example: My dog sleeps on my bed"></textarea>
+<p class="examples">Try a habit, possession, food choice, embarrassing mistake, useless talent or anything else. The stranger the clue, the better.</p>
+<button class="primary" id="appraise">APPRAISE ME</button>
+<div class="error" id="error"></div>
+</section>
+
+<section class="panel result" id="result">
+<div class="kicker">YOUR OFFICIAL CLUEWORTH</div>
+<div class="clue" id="shownClue"></div>
+<div class="value everyday"><small>YOUR EVERYDAY VALUE</small><strong id="everyday"></strong></div>
+<div class="or">OR</div>
+<div class="value impressive"><small>YOUR UNNECESSARILY IMPRESSIVE VALUE</small><strong id="impressive"></strong></div>
+<p class="verdict" id="verdict"></p>
+<div class="actions">
+<button class="share" id="share">SHARE MY VALUATION</button>
+<button class="again" id="again">APPRAISE ME AGAIN</button>
+</div>
+<p class="disclaimer">This is comedy, not a real financial, antiques, jewellery or personal valuation. Please do not attempt to pay your mortgage in potatoes.</p>
+</section>
+
+<section class="about">
+<h2>Scientifically questionable since 2026</h2>
+<p>ClueWorth turns your actual clue into a related valuation nobody asked for. Results are deliberately absurd and have no connection to your actual finances, possessions or worth as a person.</p>
+</section>
+</main>
+<canvas id="shareCanvas" width="1080" height="1920"></canvas>
+<script>
+const $=id=>document.getElementById(id);
+const btn=$("appraise"), clue=$("clue"), err=$("error"), result=$("result");
+let last=null;
+
+function escText(s){return String(s||"").replace(/\s+/g," ").trim()}
+async function appraise(){
+  const text=escText(clue.value);
+  if(!text){err.textContent="Give us a clue first.";err.classList.add("show");return}
+  err.classList.remove("show"); btn.disabled=true; btn.textContent="THE APPRAISERS ARE ARGUING…";
+  try{
+    const r=await fetch("/api/appraise",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({clue:text})});
+    const data=await r.json();
+    if(!r.ok) throw new Error(data.error||"Appraisal failed");
+    last=data;
+    $("shownClue").textContent="“"+text+"”";
+    $("everyday").textContent=data.everyday;
+    $("impressive").textContent=data.impressive;
+    $("verdict").textContent=data.verdict;
+    result.classList.add("show");
+    result.scrollIntoView({behavior:"smooth",block:"start"});
+  }catch(e){
+    err.textContent="The appraisal department has fallen over. Try again in a moment.";
+    err.classList.add("show");
+  }finally{btn.disabled=false;btn.textContent="APPRAISE ME"}
+}
+btn.onclick=appraise;
+clue.addEventListener("keydown",e=>{if((e.metaKey||e.ctrlKey)&&e.key==="Enter")appraise()});
+$("again").onclick=()=>{clue.value="";result.classList.remove("show");clue.focus();window.scrollTo({top:0,behavior:"smooth"})};
+
+function wrap(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+  const words=text.split(" ");let line="",lines=[];
+  for(const word of words){const test=line?line+" "+word:word;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=word}else line=test}
+  if(line)lines.push(line); lines=lines.slice(0,maxLines);
+  lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));
+  return y+lines.length*lineHeight;
+}
+$("share").onclick=async()=>{
+  if(!last)return;
+  const c=$("shareCanvas"),ctx=c.getContext("2d");ctx.fillStyle="#f8faf8";ctx.fillRect(0,0,c.width,c.height);
+  ctx.textAlign="center";ctx.fillStyle="#14201e";ctx.font="900 58px system-ui";ctx.fillText("ClueWorth",540,120);
+  ctx.fillStyle="#167563";ctx.font="900 30px system-ui";ctx.fillText("YOUR OFFICIAL CLUEWORTH",540,200);
+  ctx.fillStyle="#687471";ctx.font="italic 34px system-ui";wrap(ctx,"“"+escText(clue.value)+"”",540,265,900,45,3);
+  ctx.fillStyle="#e8f4f1";ctx.beginPath();ctx.roundRect(80,430,920,400,30);ctx.fill();
+  ctx.fillStyle="#687471";ctx.font="900 28px system-ui";ctx.fillText("YOUR EVERYDAY VALUE",540,510);
+  ctx.fillStyle="#14201e";ctx.font="900 62px system-ui";wrap(ctx,last.everyday,540,620,800,75,3);
+  ctx.fillStyle="#687471";ctx.font="900 35px system-ui";ctx.fillText("OR",540,900);
+  ctx.fillStyle="#fff5e2";ctx.beginPath();ctx.roundRect(80,960,920,420,30);ctx.fill();
+  ctx.fillStyle="#687471";ctx.font="900 28px system-ui";ctx.fillText("YOUR UNNECESSARILY IMPRESSIVE VALUE",540,1040);
+  ctx.fillStyle="#14201e";ctx.font="900 58px system-ui";wrap(ctx,last.impressive,540,1150,800,72,4);
+  ctx.fillStyle="#14201e";ctx.font="600 32px system-ui";wrap(ctx,last.verdict,540,1480,850,44,4);
+  ctx.fillStyle="#687471";ctx.font="26px system-ui";ctx.fillText("Scientifically questionable since 2026",540,1770);
+  const blob=await new Promise(res=>c.toBlob(res,"image/png"));
+  const file=new File([blob],"my-clueworth.png",{type:"image/png"});
+  if(navigator.share&&navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title:"My ClueWorth valuation"})}
+  else{const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="my-clueworth.png";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+};
+</script>
+</body></html>
