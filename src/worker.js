@@ -54,7 +54,8 @@ Rules:
 - Avoid generic unrelated outputs.
 - Keep everyday under 12 words, impressive under 14 words, verdict under 24 words.
 - Keep the results fresh and unpredictable. Avoid repeatedly using the same types of objects, eras, materials, places or comparisons.
-- Do not fall into recurring formulas such as "a lifetime supply of", "a lifetime pass to", royal titles, appointments, ownership, private islands, gold/golden objects, or damp objects. Vary both the sentence structure and the kind of absurd reward every time.
+- NEVER use "a lifetime supply of", "a lifetime pass to", "lifelong", royal titles, ownership of countries/oceans/planets, gold-plated objects, or other recurring grand-prize formulas. Invent a completely different comic mechanism for each clue.
+- Do not merely upgrade, enlarge, make luxurious, or make permanent something mentioned in the clue. Transform the clue into an unexpected consequence, privilege, object, experience, job, rule, service, punishment, award or situation.
 - It is comedy. Never imply the figure is a real valuation.
 - No insults about protected traits, disability, illness, body shape, intelligence, poverty or personal worth.
 - If the clue is sensitive, dangerous, sexual, hateful, criminal, medical or about self-harm, keep the joke harmless and redirect it to an ordinary neutral detail.`;
