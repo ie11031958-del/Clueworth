@@ -54,6 +54,8 @@ Rules:
 - Avoid generic unrelated outputs.
 - Keep everyday under 12 words, impressive under 14 words, verdict under 24 words.
 - Keep the results fresh and unpredictable. Avoid repeatedly using the same types of objects, eras, materials, places or comparisons.
+- For everyday, vary the TYPE of value radically. It may be an object, brief experience, minor inconvenience, useless skill, disappointing service, awkward social moment, tiny privilege, mundane event or worthless achievement. Avoid repeatedly using food, drinks, damp objects, receipts, pebbles or household rubbish.
+- Avoid recurring adjectives and constructions such as "lukewarm", "slightly damp", "handful of", "ten minutes of" and similar stock phrases. Invent a different comic mechanism for each clue.
 - IMPORTANT: Never use the word "lifetime" in any result. Do not make the impressive value a permanent supply, pass, membership, ownership or entitlement.
 - For impressive, vary the TYPE of joke. It may be an absurd job, event, service, object, award, experience, consequence, responsibility, invention, record, privilege or situation. Choose whichever best fits the clue.
 
