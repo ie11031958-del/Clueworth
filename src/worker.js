@@ -67,7 +67,8 @@ Rules:
 - It is comedy. Never imply the figure is a real valuation.
 - No insults about protected traits, disability, illness, body shape, intelligence, poverty or personal worth.
 - If the clue is sensitive, dangerous, sexual, hateful, criminal, medical or about self-harm, keep the joke harmless and redirect it to an ordinary neutral detail.`;
-
+- Before writing either value, choose a different form of reward. Do not default to an object for everyday or a title, right, appointment or contract for impressive. Freely choose from objects, money, discounts, food, services, experiences, privileges, transport, accommodation, entertainment, minor conveniences, absurd jobs, events, awards, access, assistance or something unexpected. The connection to the clue matters more than following a familiar format.
+- Do not use stock comic constructions. If the proposed answer could be reused for several unrelated clues simply by changing one noun, reject it and invent another.
 
 
     try {
