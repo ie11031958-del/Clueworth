@@ -69,6 +69,13 @@ Rules:
 - If the clue is sensitive, dangerous, sexual, hateful, criminal, medical or about self-harm, keep the joke harmless and redirect it to an ordinary neutral detail.
 - Before writing either value, choose a different form of reward. Do not default to an object for everyday or a title, right, appointment or contract for impressive. Freely choose from objects, money, discounts, food, services, experiences, privileges, transport, accommodation, entertainment, minor conveniences, absurd jobs, events, awards, access, assistance or something unexpected. The connection to the clue matters more than following a familiar format.
 - Do not use stock comic constructions. If the proposed answer could be reused for several unrelated clues simply by changing one noun, reject it and invent another.
+- Do not begin everyday with "A slightly", "A single", "A single, slightly", or similar repeated constructions.
+- Everyday must vary its grammatical structure as well as its subject. It can be money, food, an object, a favour, a ticket, a coupon, a brief experience, a tiny privilege, a service, a ridiculous trade, or something else mundane.
+- Avoid using "used", "slightly", "local", "voucher", "credit" or "single" repeatedly in everyday values.
+- Impressive must not default to jobs, titles, appointments, authority, ownership or official positions.
+- Impressive may instead be an extraordinary object, journey, event, experience, service, award, performance, absurd quantity, rare privilege or impossible luxury.
+- Avoid repeatedly beginning impressive with "The official", "Being appointed", "An official", "The right to", "Total control", or similar authority-based constructions.
+- Across both values, surprise matters more than consistency of format. There should be no obvious template a user can learn after several attempts.
 `;
 
 
