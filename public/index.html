@@ -48,7 +48,7 @@ textarea:focus{outline:0;border-color:var(--green)}button{font:inherit;font-weig
 <div class="value impressive"><small>YOUR UNNECESSARILY IMPRESSIVE VALUE</small><strong id="impressive"></strong></div>
 <p class="verdict" id="verdict"></p>
 <div class="actions">
-<button class="share" id="share">SHARE MY VALUATION</button>
+<button class="share" id="share">SHARE / SAVE CARD</button>
 <button class="again" id="again">APPRAISE ME AGAIN</button>
 </div>
 <p class="disclaimer">This is comedy, not a real financial, antiques, jewellery or personal valuation. Please do not attempt to pay your mortgage in potatoes.</p>
@@ -59,7 +59,7 @@ textarea:focus{outline:0;border-color:var(--green)}button{font:inherit;font-weig
 <p>ClueWorth turns your actual clue into a related valuation nobody asked for. Results are deliberately absurd and have no connection to your actual finances, possessions or worth as a person.</p>
 </section>
 </main>
-<canvas id="shareCanvas" width="1080" height="1350"></canvas>
+<canvas id="shareCanvas" width="1080" height="1380"></canvas>
 <script>
 const $=id=>document.getElementById(id);
 const btn=$("appraise"), clue=$("clue"), err=$("error"), result=$("result");
@@ -97,70 +97,86 @@ function wrap(ctx,text,x,y,maxWidth,lineHeight,maxLines){
   lines.forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));
   return y+lines.length*lineHeight;
 }
+
 $("share").onclick=async()=>{
   if(!last)return;
 
   const c=$("shareCanvas"),ctx=c.getContext("2d");
 
+  // Background
   ctx.fillStyle="#f8faf8";
   ctx.fillRect(0,0,c.width,c.height);
   ctx.textAlign="center";
 
+  // Header Brand
   ctx.fillStyle="#14201e";
-  ctx.font="900 58px system-ui";
-  ctx.fillText("ClueWorth",540,85);
+  ctx.font="900 62px system-ui";
+  ctx.fillText("ClueWorth",540,80);
 
   ctx.fillStyle="#167563";
-  ctx.font="900 28px system-ui";
-  ctx.fillText("YOUR OFFICIAL CLUEWORTH",540,145);
+  ctx.font="900 26px system-ui";
+  ctx.fillText("YOUR OFFICIAL CLUEWORTH",540,130);
 
+  // Clue Text
   ctx.fillStyle="#687471";
-  ctx.font="italic 30px system-ui";
-  wrap(ctx,"“"+escText(clue.value)+"”",540,200,900,40,3);
+  ctx.font="italic 28px system-ui";
+  wrap(ctx,"“"+escText(clue.value)+"”",540,180,900,38,3);
 
+  // Box 1: Everyday Value
   ctx.fillStyle="#e8f4f1";
   ctx.beginPath();
-  ctx.roundRect(80,330,920,310,30);
+  ctx.roundRect(60,280,960,330,30);
   ctx.fill();
 
   ctx.fillStyle="#687471";
-  ctx.font="900 26px system-ui";
-  ctx.fillText("YOUR EVERYDAY VALUE",540,390);
+  ctx.font="900 24px system-ui";
+  ctx.fillText("YOUR EVERYDAY VALUE",540,340);
 
   ctx.fillStyle="#14201e";
-  ctx.font="900 54px system-ui";
-  wrap(ctx,last.everyday,540,475,800,65,3);
+  ctx.font="900 52px system-ui";
+  wrap(ctx,last.everyday,540,425,860,62,3);
 
+  // OR Divider
   ctx.fillStyle="#687471";
-  ctx.font="900 32px system-ui";
-  ctx.fillText("OR",540,700);
+  ctx.font="900 30px system-ui";
+  ctx.fillText("OR",540,660);
 
+  // Box 2: Impressive Value
   ctx.fillStyle="#fff5e2";
   ctx.beginPath();
-  ctx.roundRect(80,750,920,330,30);
+  ctx.roundRect(60,700,960,350,30);
   ctx.fill();
 
   ctx.fillStyle="#687471";
-  ctx.font="900 25px system-ui";
-  ctx.fillText("YOUR UNNECESSARILY IMPRESSIVE VALUE",540,810);
+  ctx.font="900 24px system-ui";
+  ctx.fillText("YOUR UNNECESSARILY IMPRESSIVE VALUE",540,760);
 
   ctx.fillStyle="#14201e";
-  ctx.font="900 50px system-ui";
-  wrap(ctx,last.impressive,540,895,800,62,4);
+  ctx.font="900 48px system-ui";
+  wrap(ctx,last.impressive,540,845,860,58,4);
 
+  // Verdict Text
   ctx.fillStyle="#14201e";
-  ctx.font="600 28px system-ui";
-  wrap(ctx,last.verdict,540,1150,850,38,3);
+  ctx.font="600 26px system-ui";
+  wrap(ctx,last.verdict,540,1110,900,36,3);
+
+  // Bottom Watermark / Website URL
+  ctx.fillStyle="#167563";
+  ctx.font="900 28px system-ui";
+  ctx.fillText("Get yours at clueworth.co.uk",540,1260);
 
   ctx.fillStyle="#687471";
-  ctx.font="24px system-ui";
-  ctx.fillText("Scientifically questionable since 2026",540,1290);
+  ctx.font="20px system-ui";
+  ctx.fillText("Scientifically questionable since 2026",540,1310);
 
   const blob=await new Promise(res=>c.toBlob(res,"image/png"));
   const file=new File([blob],"my-clueworth.png",{type:"image/png"});
 
   if(navigator.share&&navigator.canShare?.({files:[file]})){
-    await navigator.share({files:[file],title:"My ClueWorth valuation",text:"Try yours at https://clueworth.co.uk",url:"https://clueworth.co.uk"});
+    await navigator.share({
+      files:[file],
+      title:"My ClueWorth valuation"
+    });
   }else{
     const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
