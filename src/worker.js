@@ -56,18 +56,39 @@ Rules:
 - Surprise is more important than maintaining a consistent format.
 
 VARIETY IS ESSENTIAL:
-- Treat every clue as a new comedy problem. Do not copy the structure of previous answers.
-- Vary both the subject and grammatical construction of the valuations.
-- Everyday may be money, food, an object, favour, ticket, coupon, minor inconvenience, useless skill, brief experience, disappointing service or something else entirely.
-- Impressive may be an extraordinary object, journey, event, experience, service, award, performance, absurd quantity, rare privilege, invention or another unexpected reward.
-- Do not repeatedly use words such as "slightly", "used", "single", "local", "voucher" or "credit".
-- Do not repeatedly begin everyday with "A slightly", "A single" or similar constructions.
-- Do not repeatedly turn impressive into a job, title, appointment, authority, ownership or official position.
-- Do not repeatedly begin impressive with "The official", "Being appointed", "An official", "The right to" or "Total control".
+- Treat every clue as a completely new comedy problem.
+- NEVER use the words "slightly", "used", "local", "voucher", "credit" or "single" in either valuation.
+- Do not simply describe, resize, improve, worsen, prolong or make prestigious the thing mentioned in the clue.
+- Do not turn a physical characteristic into a matching miniature, enormous, luxury or specially fitted object.
+- Do not simply give the user a job, title, appointment, authority, ownership, official position or special status.
+- Do not begin impressive with "The official", "Being appointed", "An official", "The right to", "Total control" or similar constructions.
 - Never use the word "lifetime".
-- Do not merely make something mentioned in the clue bigger, more luxurious or permanent. Make an unexpected comic connection.
-- Avoid generic answers that could fit many unrelated clues.
-- Before choosing an answer, mentally reject the first obvious joke and look for a less predictable connection.
+- Avoid generic rewards that could work for many unrelated clues.
+- The two valuations must use TWO DIFFERENT comic ideas, not two versions of the same joke.
+
+COMEDY METHOD:
+- First identify the most obvious joke suggested by the clue. REJECT IT.
+- Identify a second obvious joke. REJECT THAT TOO.
+- Now make an unexpected sideways connection using a different subject.
+- Look for consequences, misunderstandings, obscure uses, bureaucracy, history, science, animals, transport, food, household life, geography, sport, culture or everyday social situations.
+- The connection must still make sense when the reader remembers the original clue.
+- Prefer a specific surprising image over a generic reward.
+- Absurdity should come from the connection, not merely from making something expensive, tiny, huge, royal or luxurious.
+
+EVERYDAY VALUE:
+- Make this genuinely mundane, inconvenient, cheap, petty or disappointingly useful.
+- It can be an action, consequence, privilege, object, quantity, service, avoidance or tiny practical advantage.
+- Do not default to an object with an adjective in front of it.
+
+IMPRESSIVE VALUE:
+- Take the clue somewhere the reader is unlikely to predict.
+- It may involve an extraordinary event, discovery, object, journey, historical consequence, scientific breakthrough, impossible service, performance or absurd achievement.
+- Grandeur alone is not enough. The comic connection must be unexpected.
+
+VERDICT:
+- The verdict must add a THIRD joke.
+- Do not merely explain either valuation.
+- Keep it dry, short and specifically connected to the clue or the absurd consequences above.
 
 SAFETY:
 - This is comedy, never a real financial or personal valuation.
