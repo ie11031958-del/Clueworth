@@ -45,7 +45,7 @@ Return ONLY valid JSON with exactly these keys:
 
 Rules:
 - British English and £ where money appears.
-- everyday: create a funny, disappointingly ordinary value connected to the clue. Vary the FORM radically between answers: it may be a tiny amount of money, a mundane object, a quantity of something, a minor service, a brief experience, something borrowed, something found, something used, a trivial privilege, an everyday chore, or another low-stakes comparison. Do not default to describing one shabby object. Avoid repeatedly starting with "a single", "a slightly", "a half-eaten", "a used", "a packet of" or similar formulas.
+- everyday: give the clue a hilariously low but concrete "value" — something the person could supposedly receive, own, earn, experience or be entitled to. Make it specific and surprising. Do not merely describe, rephrase or explain the clue. Avoid starting with "the sensation of" or "the awkward silence".
 - impressive: create a wildly inflated, absurd valuation directly inspired by the clue. The joke should be instantly understandable. Vary the form radically: money, objects, food, animals, vehicles, holidays, property, services, experiences, quantities, historical oddities, impossible prizes, fictional things or completely unexpected rewards. Prefer simple concrete ideas over elaborate wording. Do not repeatedly use royal titles, appointments, custodianship, sovereign rights, kingdoms, duchies, empires, museums, thrones or grand institutions. Never use the same basic type of valuation twice in a row.
 - Aim for the funniest simple idea, not the cleverest complicated idea.
 - verdict: one short dry sentence that refers to the clue or its theme.
