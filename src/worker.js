@@ -54,9 +54,12 @@ Rules:
 - Avoid generic unrelated outputs.
 - Keep everyday under 12 words, impressive under 14 words, verdict under 24 words.
 - Keep the results fresh and unpredictable. Avoid repeatedly using the same types of objects, eras, materials, places or comparisons.
+- Do not fall into recurring formulas such as "a lifetime supply of", "a lifetime pass to", royal titles, appointments, ownership, private islands, gold/golden objects, or damp objects. Vary both the sentence structure and the kind of absurd reward every time.
 - It is comedy. Never imply the figure is a real valuation.
 - No insults about protected traits, disability, illness, body shape, intelligence, poverty or personal worth.
 - If the clue is sensitive, dangerous, sexual, hateful, criminal, medical or about self-harm, keep the joke harmless and redirect it to an ordinary neutral detail.`;
+- If a clue could relate to disability or illness, do not make medical aids, treatment or the condition itself the joke; use a harmless secondary idea from the clue instead.
+
 
     try {
       const response = await env.AI.run(MODEL, {
