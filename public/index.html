@@ -160,7 +160,7 @@ $("share").onclick=async()=>{
   const file=new File([blob],"my-clueworth.png",{type:"image/png"});
 
   if(navigator.share&&navigator.canShare?.({files:[file]})){
-    await navigator.share({files:[file],title:"My ClueWorth valuation"});
+    await navigator.share({files:[file],title:"My ClueWorth valuation",text:"Try yours at https://clueworth.co.uk",url:"https://clueworth.co.uk"});
   }else{
     const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
