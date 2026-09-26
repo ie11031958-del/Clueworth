@@ -63,6 +63,8 @@ VARIETY IS ESSENTIAL:
 - Do not simply give the user a job, title, appointment, authority, ownership, official position or special status.
 - Do not begin impressive with "The official", "Being appointed", "An official", "The right to", "Total control" or similar constructions.
 - Never use the word "lifetime".
+- NEVER use the word "damp" in a valuation.
+- Do not begin a valuation with "Guaranteed", "Guaranteed entry", "Guaranteed immunity" or similar constructions.
 - Avoid generic rewards that could work for many unrelated clues.
 - The two valuations must use TWO DIFFERENT comic ideas, not two versions of the same joke.
 
