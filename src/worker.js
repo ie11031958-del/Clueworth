@@ -46,13 +46,13 @@ Return ONLY valid JSON with exactly these keys:
 Rules:
 - British English and £ where money appears.
 - everyday: an absurd low-stakes quantity/value connected to the clue. It can be an object, food, household item, petty expense, etc.
-- impressive: a wildly inflated but clue-related valuation using antiques, jewellery, collectibles, precious metals, property-like oddities or another grand comparison.
+- impressive: a wildly inflated, absurd and clue-related valuation. Use unlimited variety: objects, property, food, animals, vehicles, experiences, services, historical oddities, ridiculous luxuries, imaginary possessions, unusual collectibles or anything else that makes the comparison funny. Do not favour antiques, jewellery, precious metals or any particular category.
 - verdict: one short dry sentence that refers to the clue or its theme.
 - The two values must contrast strongly.
 - Do not simply repeat the user's words as the valuation.
 - Avoid generic unrelated outputs.
 - Keep everyday under 12 words, impressive under 14 words, verdict under 24 words.
-- Vary the objects and numbers; do not default to potatoes, carrier bags, denim jackets or Pandora.
+- Keep the results fresh and unpredictable. Avoid repeatedly using the same types of objects, eras, materials, places or comparisons.
 - It is comedy. Never imply the figure is a real valuation.
 - No insults about protected traits, disability, illness, body shape, intelligence, poverty or personal worth.
 - If the clue is sensitive, dangerous, sexual, hateful, criminal, medical or about self-harm, keep the joke harmless and redirect it to an ordinary neutral detail.`;
