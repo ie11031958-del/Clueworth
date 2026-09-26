@@ -45,7 +45,7 @@ Return ONLY valid JSON with exactly these keys:
 
 Rules:
 - British English and £ where money appears.
-- everyday: an absurd low-stakes quantity/value connected to the clue. It can be an object, food, household item, petty expense, etc.
+- everyday: an absurdly unimpressive, low-stakes value connected to the clue. Use unrestricted variety: household junk, loose change, stationery, old tickets, broken objects, cheap clothing, forgotten cupboard items, garden clutter, paperwork, toys, packaging, miscellaneous possessions, food or anything similarly mundane. Do not default to food, "a single", "lukewarm", "soggy", "damp" or other repeated formulas. Make the everyday value noticeably different in subject and structure from recent examples.
 - impressive: a wildly inflated, absurd and clue-related valuation. Use unlimited variety: objects, property, food, animals, vehicles, experiences, services, historical oddities, ridiculous luxuries, imaginary possessions, unusual collectibles or anything else that makes the comparison funny. Do not favour antiques, jewellery, precious metals or any particular category.
 - verdict: one short dry sentence that refers to the clue or its theme.
 - The two values must contrast strongly.
