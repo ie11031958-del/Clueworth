@@ -48,7 +48,7 @@ textarea:focus{outline:0;border-color:var(--green)}button{font:inherit;font-weig
 <div class="value impressive"><small>YOUR UNNECESSARILY IMPRESSIVE VALUE</small><strong id="impressive"></strong></div>
 <p class="verdict" id="verdict"></p>
 <div class="actions">
-<button class="share" id="share">SHARE VALUATION</button>
+<button class="share" id="share">SHARE VALUATION CARD</button>
 <button class="again" id="again">APPRAISE ME AGAIN</button>
 </div>
 <p class="disclaimer">This is comedy, not a real financial, antiques, jewellery or personal valuation. Please do not attempt to pay your mortgage in potatoes.</p>
@@ -103,7 +103,6 @@ $("share").onclick=async()=>{
 
   const c=$("shareCanvas"),ctx=c.getContext("2d");
 
-  // Canvas Drawing
   ctx.fillStyle="#f8faf8";
   ctx.fillRect(0,0,c.width,c.height);
   ctx.textAlign="center";
@@ -169,9 +168,7 @@ $("share").onclick=async()=>{
     try{
       await navigator.share({
         files:[file],
-        title:"My ClueWorth valuation",
-        text:"Try yours at https://clueworth.co.uk",
-        url:"https://clueworth.co.uk"
+        title:"My ClueWorth valuation"
       });
     }catch(e){}
   }else{
