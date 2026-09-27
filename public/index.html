@@ -18,11 +18,10 @@ textarea:focus{outline:0;border-color:var(--green)}button{font:inherit;font-weig
 .kicker{color:var(--green);font-weight:900;letter-spacing:2px;font-size:14px}.clue{font-style:italic;color:var(--muted);font-size:18px;margin:10px 0 22px}
 .value{padding:25px;border-radius:15px;margin:0}.value small{display:block;color:var(--muted);font-weight:900;letter-spacing:1.4px;margin-bottom:12px}.value strong{display:block;font-size:clamp(32px,6vw,51px);line-height:1.05;letter-spacing:-1.5px}.everyday{background:var(--mint)}.impressive{background:var(--cream)}
 .or{font-weight:900;color:var(--muted);margin:16px}.verdict{font-size:18px;line-height:1.45;margin:25px auto;max-width:700px}
-.actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.share-img{background:var(--ink);color:#fff;border:0}.share-link{background:var(--green);color:#fff;border:0}.again{background:#fff;color:#087ee8;border:1px solid var(--line)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}.share{background:var(--ink);color:#fff;border:0}.again{background:#fff;color:#087ee8;border:1px solid var(--line)}
 .disclaimer{font-size:13px;color:var(--muted);line-height:1.45;margin:22px auto 0;max-width:760px}.error{display:none;color:#8b2525;background:#fff0f0;border:1px solid #f1cccc;padding:12px;border-radius:10px;margin-top:12px}.error.show{display:block}
-.toast{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#14201e;color:#fff;padding:12px 24px;border-radius:30px;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,0.2);z-index:99}.toast.show{display:block}
 .about{text-align:center;padding:34px 0 65px}.about h2{font-size:30px;margin:0 0 12px}.about p{color:var(--muted);line-height:1.55;max-width:760px;margin:auto}
-#shareCanvas{display:none}@media(max-width:700px){.hero{padding-top:35px}.panel{padding:20px}.actions{grid-template-columns:1fr}h1{letter-spacing:-1px}}
+#shareCanvas{display:none}@media(max-width:650px){.hero{padding-top:35px}.panel{padding:20px}.actions{grid-template-columns:1fr}h1{letter-spacing:-1px}}
 </style>
 </head>
 <body>
@@ -49,8 +48,7 @@ textarea:focus{outline:0;border-color:var(--green)}button{font:inherit;font-weig
 <div class="value impressive"><small>YOUR UNNECESSARILY IMPRESSIVE VALUE</small><strong id="impressive"></strong></div>
 <p class="verdict" id="verdict"></p>
 <div class="actions">
-<button class="share-img" id="shareImg">SAVE CARD IMAGE</button>
-<button class="share-link" id="shareLink">SHARE CLICKABLE LINK</button>
+<button class="share" id="share">SHARE VALUATION</button>
 <button class="again" id="again">APPRAISE ME AGAIN</button>
 </div>
 <p class="disclaimer">This is comedy, not a real financial, antiques, jewellery or personal valuation. Please do not attempt to pay your mortgage in potatoes.</p>
@@ -61,7 +59,6 @@ textarea:focus{outline:0;border-color:var(--green)}button{font:inherit;font-weig
 <p>ClueWorth turns your actual clue into a related valuation nobody asked for. Results are deliberately absurd and have no connection to your actual finances, possessions or worth as a person.</p>
 </section>
 </main>
-<div class="toast" id="toast">Link copied to clipboard!</div>
 <canvas id="shareCanvas" width="1080" height="1380"></canvas>
 <script>
 const $=id=>document.getElementById(id);
@@ -69,13 +66,6 @@ const btn=$("appraise"), clue=$("clue"), err=$("error"), result=$("result");
 let last=null;
 
 function escText(s){return String(s||"").replace(/\s+/g," ").trim()}
-function showToast(msg){
-  const t=$("toast");
-  t.textContent=msg;
-  t.classList.add("show");
-  setTimeout(()=>t.classList.remove("show"),2500);
-}
-
 async function appraise(){
   const text=escText(clue.value);
   if(!text){err.textContent="Give us a clue first.";err.classList.add("show");return}
@@ -108,11 +98,12 @@ function wrap(ctx,text,x,y,maxWidth,lineHeight,maxLines){
   return y+lines.length*lineHeight;
 }
 
-$("shareImg").onclick=async()=>{
+$("share").onclick=async()=>{
   if(!last)return;
 
   const c=$("shareCanvas"),ctx=c.getContext("2d");
 
+  // Canvas Drawing
   ctx.fillStyle="#f8faf8";
   ctx.fillRect(0,0,c.width,c.height);
   ctx.textAlign="center";
@@ -175,34 +166,20 @@ $("shareImg").onclick=async()=>{
   const file=new File([blob],"my-clueworth.png",{type:"image/png"});
 
   if(navigator.share&&navigator.canShare?.({files:[file]})){
-    await navigator.share({
-      files:[file],
-      title:"My ClueWorth valuation"
-    });
+    try{
+      await navigator.share({
+        files:[file],
+        title:"My ClueWorth valuation",
+        text:"Try yours at https://clueworth.co.uk",
+        url:"https://clueworth.co.uk"
+      });
+    }catch(e){}
   }else{
     const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
     a.download="my-clueworth.png";
     a.click();
     setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-  }
-};
-
-$("shareLink").onclick=async()=>{
-  if(!last)return;
-  const shareText=`My ClueWorth valuation:\n"Everyday Value: ${last.everyday}"\nGet yours at https://clueworth.co.uk`;
-  
-  if(navigator.share){
-    try{
-      await navigator.share({
-        title:"My ClueWorth Valuation",
-        text:shareText,
-        url:"https://clueworth.co.uk"
-      });
-    }catch(e){}
-  }else{
-    navigator.clipboard.writeText(shareText);
-    showToast("Clickable link copied!");
   }
 };
 </script>
